@@ -1,0 +1,407 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #050505;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 8px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  color: #bdbdbd;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+main > p:not(.tagline) {
+  color: #888;
+  margin-bottom: 25px;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+button {
+  background: transparent;
+  color: #ddd;
+  border: 1px solid #666;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px;
+}
+
+button:hover {
+  background: #ddd;
+  color: #050505;
+}
+
+#games {
+  margin-top: 80px;
+}
+
+#games h2 {
+  color: #ddd;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
+
+.game-card {
+  border: 1px solid #333;
+  background: #0b0b0b;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 600px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.game-card:hover {
+  border-color: #aaa;
+  transform: translateY(-3px);
+}
+
+.game-card h3 {
+  color: #eee;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.game-card p {
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.game-card small {
+  color: #aaa;
+}
+
+/* NEON RIFT */
+
+.game-screen {
+  display: none;
+  margin-top: 50px;
+  padding: 30px;
+  border: 1px solid #555;
+  background: #080808;
+}
+
+.game-screen h2 {
+  color: #fff;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+}
+
+.game-screen > p {
+  color: #888;
+  margin-bottom: 20px;
+}
+
+#game-area {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 300px;
+  margin: 30px auto;
+  border: 1px solid #666;
+box-shadow:
+  0 0 20px rgba(255,255,255,0.08),
+  inset 0 0 30px rgba(255,255,255,0.03);
+  background:
+  linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+  #020202;
+background-size: 30px 30px;
+  overflow: hidden;
+}
+
+#player {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  font-size: 30px;
+  color: #fff;
+}
+
+#goal {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: #bbb;
+  font-weight: bold;
+}
+
+#game-status {
+  color: #aaa;
+  letter-spacing: 2px;
+}
+#obstacle {
+  position: absolute;
+  left: 45%;
+  bottom: 20px;
+  width: 35px;
+  height: 60px;
+  background: #888;
+}
+/* NEON RIFT OBSTACLES */
+
+.obstacle {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: #ff1744;
+  border: 2px solid #ff5577;
+  box-shadow: 0 0 12px #ff1744;
+  z-index: 5;
+}
+/* =========================
+   ZERO SECTOR
+========================= */
+
+#zero-area {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 300px;
+  margin: 30px auto;
+  border: 1px solid #444;
+  background: #020202;
+  overflow: hidden;
+}
+
+/* ZERO PLAYER */
+
+#zero-player {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-size: 30px;
+  color: #ffffff;
+  z-index: 10;
+}
+
+/* ZERO OBSTACLES */
+
+.zero-obstacle {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: #777;
+  border: 2px solid #aaa;
+  z-index: 5;
+}
+
+/* ZERO CORE */
+
+#zero-core {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  z-index: 4;
+}
+
+/* ZERO STATUS */
+
+#zero-status {
+  color: #aaa;
+  letter-spacing: 2px;
+}
+
+/* ZERO GAME OVER */
+
+#zero-game-over {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #555;
+  background: #080808;
+}
+
+#zero-game-over h2 {
+  color: #ffffff;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+#zero-final-score {
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   DARK CIRCUIT
+========================= */
+
+#dark-area {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 300px;
+  margin: 30px auto;
+  border: 1px solid #666;
+  background:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+    #020202;
+  background-size: 30px 30px;
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.08),
+    inset 0 0 30px rgba(255,255,255,0.03);
+  overflow: hidden;
+  
+}
+
+#dark-area::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  top: 0;
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 12px rgba(255,255,255,0.25);
+  animation: circuitScan 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes circuitScan {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+#dark-status {
+  margin: 15px auto;
+  padding: 12px 20px;
+  max-width: 700px;
+  border: 1px solid #333;
+  background: #050505;
+  color: #aaa;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(255,255,255,0.04);
+}
+
+.circuit-node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #777;
+  background: #050505;
+  color: #aaa;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.08);
+  transition: 0.2s;
+}
+
+.circuit-node:hover {
+  border-color: #fff;
+  background: #222;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  transform: scale(1.05);
+}
+
+.circuit-node.active {
+  background: #ddd;
+  color: #050505;
+  border-color: #fff;
+  box-shadow: 0 0 25px rgba(255,255,255,0.8);
+  transform: scale(1.08);
+}
+
+.circuit-node.active {
+  animation: circuitPulse 0.35s ease-out;
+}
+
+@keyframes circuitPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+
+#dark-game-over {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #555;
+  background: #080808;
+}
+
+#dark-game-over h2 {
+  color: #fff;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+#dark-final-score {
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+#dark-game h2 {
+  text-shadow:
+    0 0 8px rgba(255,255,255,0.25),
+    0 0 20px rgba(255,255,255,0.08);
+}
+
+#dark-game > p {
+  letter-spacing: 2px;
+}
+
+#dark-game > p:first-of-type {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+#dark-game > p {
+  color: #aaa;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+#dark-game.low-attempts #dark-status {
+  border-color: #777;
+  box-shadow: 0 0 18px rgba(255,255,255,0.15);
+}

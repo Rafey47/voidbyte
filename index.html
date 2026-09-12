@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoidByte</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main>
+
+    <h1>VOIDBYTE</h1>
+
+    <p class="tagline">ENTER THE VOID. BREAK THE CODE.</p>
+
+    <p>
+      A fictional game universe built from pixels, code,
+      glitches, and pure chaos.
+    </p>
+
+    <div class="status">
+      <span>● SYSTEM ONLINE</span>
+      <span>VOIDBYTE NETWORK</span>
+    </div>
+
+    <button onclick="startGame()">ENTER GAME</button>
+
+
+    <!-- NEON RIFT -->
+
+    <section id="neon-game" class="game-screen">
+
+      <h2>NEON RIFT</h2>
+
+      <p>ESCAPE THE COLLAPSING DIGITAL WORLD</p>
+
+      <div id="score">
+        SCORE: 0 | LEVEL: 1 | ❤️ LIVES: 3
+      </div>
+
+
+      <div id="game-area">
+
+        <div id="player">◆</div>
+
+        <div class="obstacle"></div>
+        <div class="obstacle"></div>
+        <div class="obstacle"></div>
+        <div class="obstacle"></div>
+        <div class="obstacle"></div>
+
+        <div id="goal">EXIT</div>
+
+      </div>
+
+
+      <p id="game-status">
+        USE ← → ↑ ↓ KEYS TO MOVE
+      </p>
+
+
+      <div id="game-over" style="display: none;">
+
+        <h2>GAME OVER</h2>
+
+        <p id="final-score">
+          FINAL SCORE: 0
+        </p>
+
+        <button onclick="restartGame()">
+          PLAY AGAIN
+        </button>
+
+      </div>
+
+
+      <button onclick="restartGame()">
+        RESTART
+      </button>
+
+    </section>
+
+    <!-- ZERO SECTOR -->
+
+<section id="zero-game" class="game-screen">
+
+  <h2>ZERO SECTOR</h2>
+
+  <p>INVESTIGATE THE ABANDONED DIGITAL SECTOR</p>
+
+  <div id="zero-score">
+    DATA: 0 | SECTOR: 1 | ❤️ LIVES: 3
+  </div>
+
+  <div id="zero-area">
+
+    <div id="zero-player">◆</div>
+
+    <div class="zero-obstacle"></div>
+    <div class="zero-obstacle"></div>
+    <div class="zero-obstacle"></div>
+    <div class="zero-obstacle"></div>
+    <div class="zero-obstacle"></div>
+    <div class="zero-obstacle"></div>
+
+    <div id="zero-core">CORE</div>
+
+  </div>
+
+  <p id="zero-status">
+    USE ← → ↑ ↓ KEYS TO EXPLORE
+  </p>
+
+  <div id="zero-game-over" style="display: none;">
+
+    <h2>MISSION FAILED</h2>
+
+    <p id="zero-final-score">
+      DATA RECOVERED: 0
+    </p>
+
+    <button onclick="restartZeroGame()">
+      TRY AGAIN
+    </button>
+
+  </div>
+
+  <button onclick="restartZeroGame()">
+    RESTART
+  </button>
+
+</section> 
+
+<!-- DARK CIRCUIT -->
+
+<section id="dark-game" class="game-screen">
+
+  <h2>DARK CIRCUIT</h2>
+
+  <p>RECONNECT THE SYSTEM BEFORE THE CIRCUIT COLLAPSES</p>
+
+  <div id="dark-score">
+    NODES: 0 | LEVEL: 1 | ATTEMPTS: 3
+  </div>
+
+  <div id="dark-area">
+
+    <button class="circuit-node" onclick="activateNode(0)">01</button>
+    <button class="circuit-node" onclick="activateNode(1)">02</button>
+    <button class="circuit-node" onclick="activateNode(2)">03</button>
+    <button class="circuit-node" onclick="activateNode(3)">04</button>
+    <button class="circuit-node" onclick="activateNode(4)">05</button>
+    <button class="circuit-node" onclick="activateNode(5)">06</button>
+
+  </div>
+
+  <p id="dark-status">
+    SYSTEM OFFLINE — ACTIVATE THE NODES
+  </p>
+
+  <div id="dark-game-over" style="display: none;">
+
+    <h2>CIRCUIT FAILED</h2>
+
+    <p id="dark-final-score">
+      NODES CONNECTED: 0
+    </p>
+
+    <button onclick="restartDarkGame()">
+      TRY AGAIN
+    </button>
+
+  </div>
+
+  <button onclick="restartDarkGame()">
+    RESTART
+  </button>
+
+</section>
+
+    <!-- FEATURED GAMES -->
+
+    <section id="games">
+
+      <h2>FEATURED GAMES</h2>
+
+
+      <div class="game-card"
+           onclick="openGame('Neon Rift')">
+
+        <h3>Neon Rift</h3>
+
+        <p>
+          Escape a corrupted digital world before it collapses.
+        </p>
+
+        <small>
+          ▶ CLICK TO INITIALIZE
+        </small>
+
+      </div>
+
+
+      <div class="game-card"
+           onclick="openGame('Zero Sector')">
+
+        <h3>Zero Sector</h3>
+
+        <p>
+          Explore an abandoned sector hiding something impossible.
+        </p>
+
+        <small>
+          ▶ CLICK TO INITIALIZE
+        </small>
+
+      </div>
+
+
+      <div class="game-card"
+           onclick="openGame('Dark Circuit')">
+
+        <h3>Dark Circuit</h3>
+
+        <p>
+          Survive the machines that were never supposed to wake up.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+
+    /* =========================
+       MAIN NAVIGATION
+    ========================= */
+
+    function startGame() {
+
+      document.getElementById("games").scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+function openGame(game) {
+
+  if (game === "Neon Rift") {
+
+    document.getElementById("zero-game").style.display = "none";
+    document.getElementById("neon-game").style.display = "block";
+
+    restartGame();
+
+    document.getElementById("neon-game").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+  if (game === "Zero Sector") {
+
+    document.getElementById("neon-game").style.display = "none";
+    document.getElementById("zero-game").style.display = "block";
+
+    restartZeroGame();
+
+    document.getElementById("zero-game").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+  if (game === "Dark Circuit") {
+
+    document.getElementById("neon-game").style.display = "none";
+    document.getElementById("zero-game").style.display = "none";
+    document.getElementById("dark-game").style.display = "block";
+
+    restartDarkGame();
+
+    document.getElementById("dark-game").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+}
+
+
+
+    /* =========================
+       GAME VARIABLES
+    ========================= */
+
+    let playerPosition = 0;
+
+    let playerBottom = 20;
+
+    let gameOver = false;
+
+    let score = 0;
+
+    let level = 1;
+
+    let obstacleSpeed = 1.8;
+
+    let lives = 3;
+
+    let obstacles = [];
+
+    /* =========================
+   DARK CIRCUIT VARIABLES
+========================= */
+
+let darkLevel = 1;
+let darkNodes = 0;
+let darkAttempts = 3;
+let darkScore = 0;
+let darkCombo = 0;
+let darkTime = 15;
+let darkTimer = null;
+let darkGameOver = false;
+let darkSequence = [];
+let darkProgress = 0;
+
+function setupDarkCircuit() {
+   
+  darkSequence = [];
+  
+  darkProgress = 0;
+
+  for (let i = 0; i < Math.min(8, 3 + darkLevel); i++) {
+
+    let nextNode;
+
+do {
+  nextNode = Math.floor(Math.random() * 6);
+} while (
+  darkSequence.length > 0 &&
+  nextNode === darkSequence[darkSequence.length - 1]
+);
+
+darkSequence.push(nextNode);
+  }
+
+  document.querySelectorAll(".circuit-node").forEach(
+    function(node, index) {
+
+      node.classList.remove("active");
+
+      node.style.left = (40 + (index % 3) * 210 + Math.random() * 30) + "px";
+      
+      node.style.top = (25 + Math.floor(index / 3) * 120 + Math.random() * 25) + "px";
+
+    }
+  );
+
+  document.getElementById("dark-status").textContent =
+  "SEQUENCE GENERATED — WATCH THE CIRCUIT";
+
+
+}
+
+function showDarkSequence() {
+
+  let countdown = 3;
+
+  document.getElementById("dark-status").textContent =
+    "MEMORIZE SEQUENCE — " + countdown;
+
+  const countdownTimer = setInterval(() => {
+
+    countdown--;
+
+    if (countdown > 0) {
+
+      document.getElementById("dark-status").textContent =
+        "MEMORIZE SEQUENCE — " + countdown;
+
+    } else {
+
+      clearInterval(countdownTimer);
+
+      document.getElementById("dark-status").textContent =
+        "MEMORIZE THE CIRCUIT SEQUENCE";
+
+      let index = 0;
+
+      function showNext() {
+
+        if (index >= darkSequence.length) {
+
+         document.getElementById("dark-status").textContent =
+  "SEQUENCE HIDDEN — LEVEL " + darkLevel + " — RECONNECT THE CIRCUIT";
+
+startDarkTimer();
+
+return; 
+        }
+
+        const node =
+          document.querySelectorAll(".circuit-node")
+          [darkSequence[index]];
+
+        node.classList.add("active");
+
+        setTimeout(function() {
+
+          node.classList.remove("active");
+
+          index++;
+
+          setTimeout(showNext, 200);
+
+        }, Math.max(300, 500 - darkLevel * 40));
+      }
+
+      showNext();
+    }
+
+  }, 400);
+}
+
+
+  function activateNode(nodeIndex) {
+
+  if (darkGameOver) return;
+
+  const node =
+    document.querySelectorAll(".circuit-node")[nodeIndex];
+
+  node.classList.add("active");
+
+  setTimeout(function() {
+    node.classList.remove("active");
+  }, 200);
+
+  if (nodeIndex === darkSequence[darkProgress]) {
+
+    darkScore += 10 * darkLevel;
+
+    darkCombo++;
+    darkScore += darkCombo * 2;
+
+    darkProgress++;
+    darkNodes++;
+
+    document.getElementById("dark-score").textContent =
+      "SCORE: " + darkScore +
+      " | COMBO: " + darkCombo +
+      " | NODES: " + darkNodes +
+      " | LEVEL: " + darkLevel +
+      " | ATTEMPT: " + darkAttempts;
+
+    if (darkProgress >= darkSequence.length) {
+
+      if (darkTimer) {
+        clearInterval(darkTimer);
+        darkTimer = null;
+      }
+
+      darkScore += 50 * darkLevel;
+
+      document.getElementById("dark-status").textContent =
+        "CIRCUIT STABILIZED — LEVEL " + darkLevel + " COMPLETE";
+
+      darkLevel++;
+      darkProgress = 0;
+
+      setTimeout(function() {
+
+        if (!darkGameOver) {
+          setupDarkCircuit();
+          showDarkSequence();
+        }
+
+      }, 1000);
+    }
+
+  } else {
+
+    darkAttempts--;
+    darkCombo = 0;
+    darkProgress = 0;
+
+    if (darkAttempts <= 1) {
+      document.getElementById("dark-game").classList.add("low-attempts");
+    }
+
+    document.getElementById("dark-score").textContent =
+      "SCORE: " + darkScore +
+      " | COMBO: " + darkCombo +
+      " | NODES: " + darkNodes +
+      " | LEVEL: " + darkLevel +
+      " | ATTEMPT: " + darkAttempts;
+
+    if (darkAttempts <= 0) {
+
+      darkGameOver = true;
+
+      if (darkTimer) {
+        clearInterval(darkTimer);
+        darkTimer = null;
+      }
+
+      document.getElementById("dark-game-over").style.display = "block";
+
+      document.getElementById("dark-final-score").textContent =
+        "FINAL SCORE: " + darkScore;
+
+      document.getElementById("dark-status").textContent =
+        "SYSTEM FAILURE — CIRCUIT LOST";
+
+      return;
+    }
+
+    document.getElementById("dark-status").textContent =
+      "WRONG NODE — CIRCUIT CORRUPTED";
+
+    setTimeout(function() {
+      if (!darkGameOver) {
+        showDarkSequence();
+      }
+    }, 1000);
+  }
+}
+
+    /* =========================
+   NEON RIFT CONTROLS
+========================= */
+
+document.addEventListener("keydown", function(event) {
+
+  /*
+     Do not control Neon Rift while
+     Zero Sector is active.
+  */
+
+  if (isZeroSectorActive()) return;
+
+  if (gameOver) return;
+
+
+  const player =
+    document.getElementById("player");
+
+  const gameArea =
+    document.getElementById("game-area");
+
+
+  if (
+    event.key === "ArrowUp" ||
+    event.key === "ArrowDown" ||
+    event.key === "ArrowLeft" ||
+    event.key === "ArrowRight"
+  ) {
+
+    event.preventDefault();
+
+  }
+
+
+  if (event.key === "ArrowRight") {
+
+    playerPosition += 10;
+
+  }
+
+
+  if (event.key === "ArrowLeft") {
+
+    playerPosition -= 10;
+
+  }
+
+
+  if (event.key === "ArrowUp") {
+
+    playerBottom += 20;
+
+  }
+
+
+  if (event.key === "ArrowDown") {
+
+    playerBottom -= 20;
+
+  }
+
+
+  /* Keep player inside game */
+
+  if (playerPosition < 0) {
+
+    playerPosition = 0;
+
+  }
+
+
+  if (playerBottom < 20) {
+
+    playerBottom = 20;
+
+  }
+
+
+  if (
+    playerBottom >
+    gameArea.clientHeight - 50
+  ) {
+
+    playerBottom =
+      gameArea.clientHeight - 50;
+
+  }
+
+
+  const maxPosition =
+    gameArea.clientWidth -
+    player.offsetWidth;
+
+
+  if (playerPosition > maxPosition) {
+
+    playerPosition = maxPosition;
+
+  }
+
+
+  player.style.left =
+    playerPosition + "px";
+
+  player.style.bottom =
+    playerBottom + "px";
+
+
+  checkCollision();
+
+});
+
+ /* =========================
+   ZERO SECTOR
+========================= */
+
+let zeroPlayerX = 20;
+let zeroPlayerY = 20;
+
+let zeroGameOver = false;
+let zeroGameStarted = false;
+
+let zeroData = 0;
+let zeroSector = 1;
+let zeroLives = 3;
+
+let zeroObjects = [];
+
+let zeroInvulnerable = false;
+let zeroCoreLocked = false;
+let zeroHitTimer = null;
+
+
+/* =========================
+   ZERO SECTOR ACTIVE CHECK
+========================= */
+
+function isZeroSectorActive() {
+
+  const zeroGame =
+    document.getElementById("zero-game");
+
+  if (!zeroGame) return false;
+
+  return (
+    zeroGame.style.display !== "none" &&
+    zeroGameStarted &&
+    !zeroGameOver
+  );
+
+}
+
+
+/* =========================
+   ZERO SECTOR CONTROLS
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (!isZeroSectorActive()) return;
+
+    if (
+      event.key !== "ArrowUp" &&
+      event.key !== "ArrowDown" &&
+      event.key !== "ArrowLeft" &&
+      event.key !== "ArrowRight"
+    ) {
+
+      return;
+
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+
+    const player =
+      document.getElementById("zero-player");
+
+    const gameArea =
+      document.getElementById("zero-area");
+
+    if (!player || !gameArea) return;
+
+
+    const moveAmount = 10;
+
+
+    if (event.key === "ArrowRight") {
+      zeroPlayerX += moveAmount;
+    }
+
+    if (event.key === "ArrowLeft") {
+      zeroPlayerX -= moveAmount;
+    }
+
+    if (event.key === "ArrowUp") {
+      zeroPlayerY += moveAmount;
+    }
+
+    if (event.key === "ArrowDown") {
+      zeroPlayerY -= moveAmount;
+    }
+
+
+    const maxX =
+      Math.max(
+        0,
+        gameArea.clientWidth -
+        player.offsetWidth
+      );
+
+
+    const maxY =
+      Math.max(
+        0,
+        gameArea.clientHeight -
+        player.offsetHeight
+      );
+
+
+    if (zeroPlayerX < 0) {
+      zeroPlayerX = 0;
+    }
+
+    if (zeroPlayerX > maxX) {
+      zeroPlayerX = maxX;
+    }
+
+    if (zeroPlayerY < 0) {
+      zeroPlayerY = 0;
+    }
+
+    if (zeroPlayerY > maxY) {
+      zeroPlayerY = maxY;
+    }
+
+
+    player.style.left =
+      zeroPlayerX + "px";
+
+    player.style.bottom =
+      zeroPlayerY + "px";
+
+
+    checkZeroCollision();
+
+  },
+  true
+);
+
+
+/* =========================
+   CREATE ZERO OBJECTS
+========================= */
+
+function setupZeroObjects() {
+
+  const gameArea =
+    document.getElementById("zero-area");
+
+  const objectElements =
+    document.querySelectorAll(".zero-obstacle");
+
+
+  if (!gameArea) return;
+
+
+  zeroObjects = [];
+
+
+  /*
+     Start with 3 obstacles.
+     Add another obstacle every
+     3 sectors.
+  */
+
+  const activeCount =
+    Math.min(
+      5 +
+      Math.floor(
+        (zeroSector - 1) / 3
+      ),
+      6
+    );
+
+
+  objectElements.forEach(
+    function(object, index) {
+
+      if (index >= activeCount) {
+
+        object.style.display = "none";
+
+        return;
+
+      }
+
+
+      object.style.display = "block";
+
+
+      let x;
+      let y;
+
+      let safe = false;
+
+      let attempts = 0;
+
+
+      /*
+         Find a safe starting position.
+      */
+
+      while (
+        !safe &&
+        attempts < 100
+      ) {
+
+        const maxX =
+          Math.max(
+            120,
+            gameArea.clientWidth - 100
+          );
+
+
+        const maxY =
+          Math.max(
+            120,
+            gameArea.clientHeight - 100
+          );
+
+
+        x =
+          100 +
+          Math.random() *
+          Math.max(
+            20,
+            maxX - 100
+          );
+
+
+        y =
+          80 +
+          Math.random() *
+          Math.max(
+            20,
+            maxY - 80
+          );
+
+
+        const distanceX =
+          Math.abs(
+            x - zeroPlayerX
+          );
+
+
+        const distanceY =
+          Math.abs(
+            y - zeroPlayerY
+          );
+
+
+        /*
+           BOTH distances must be safe.
+        */
+
+        if (
+          distanceX > 140 &&
+          distanceY > 90
+        ) {
+
+          safe = true;
+
+        }
+
+
+        attempts++;
+
+      }
+
+
+      /*
+         Safe fallback.
+      */
+
+      if (!safe) {
+
+        x =
+          180 +
+          index * 70;
+
+        y = 120;
+
+      }
+
+
+      const objectData = {
+
+        element: object,
+
+        x: x,
+
+        y: y,
+
+        directionX:
+          Math.random() > 0.5
+            ? 1
+            : -1,
+
+        directionY:
+          Math.random() > 0.5
+            ? 1
+            : -1
+
+      };
+
+
+      zeroObjects.push(
+        objectData
+      );
+
+
+      object.style.left =
+        x + "px";
+
+      object.style.bottom =
+        y + "px";
+
+    }
+  );
+
+}
+
+
+/* =========================
+   ZERO COLLISION
+========================= */
+
+function checkZeroCollision() {
+
+  if (
+    !zeroGameStarted ||
+    zeroGameOver ||
+    zeroInvulnerable ||
+    zeroCoreLocked
+  ) {
+
+    return;
+
+  }
+
+
+  const player =
+    document.getElementById(
+      "zero-player"
+    );
+
+  const core =
+    document.getElementById(
+      "zero-core"
+    );
+
+
+  if (!player || !core) return;
+
+
+  const playerRect =
+    player.getBoundingClientRect();
+
+
+  /*
+     OBSTACLES
+  */
+
+  for (
+    const object of zeroObjects
+  ) {
+
+    if (
+      !object.element ||
+      object.element.style.display === "none"
+    ) {
+
+      continue;
+
+    }
+
+
+    const objectRect =
+      object.element
+        .getBoundingClientRect();
+
+
+    const collision =
+
+      playerRect.right >
+      objectRect.left &&
+
+      playerRect.left <
+      objectRect.right &&
+
+      playerRect.bottom >
+      objectRect.top &&
+
+      playerRect.top <
+      objectRect.bottom;
+
+
+    if (collision) {
+
+      loseZeroLife();
+
+      return;
+
+    }
+
+  }
+
+
+  /*
+     CORE
+  */
+
+  const coreRect =
+    core.getBoundingClientRect();
+
+
+  const coreCollision =
+
+    playerRect.right >
+    coreRect.left &&
+
+    playerRect.left <
+    coreRect.right &&
+
+    playerRect.bottom >
+    coreRect.top &&
+
+    playerRect.top <
+    coreRect.bottom;
+
+
+  if (coreCollision) {
+
+    completeZeroSector();
+
+  }
+
+}
+
+
+/* =========================
+   COMPLETE SECTOR
+========================= */
+
+function completeZeroSector() {
+
+  if (
+    zeroGameOver ||
+    zeroCoreLocked
+  ) {
+
+    return;
+
+  }
+
+
+  zeroCoreLocked = true;
+
+
+  zeroData += 10;
+
+  zeroSector++;
+
+
+  updateZeroDisplay();
+
+
+  document.getElementById(
+    "zero-status"
+  ).textContent =
+    "CORE ACCESSED — SECTOR COMPLETE";
+
+
+  zeroPlayerX = 20;
+  zeroPlayerY = 20;
+
+
+  const player =
+    document.getElementById(
+      "zero-player"
+    );
+
+
+  player.style.left = "20px";
+  player.style.bottom = "20px";
+
+
+  setTimeout(
+    function() {
+
+      if (zeroGameOver) return;
+
+
+      setupZeroObjects();
+
+
+      zeroCoreLocked = false;
+
+
+      document.getElementById(
+        "zero-status"
+      ).textContent =
+        "SECTOR " +
+        zeroSector +
+        " — FIND THE CORE";
+
+    },
+    400
+  );
+
+}
+
+
+/* =========================
+   ZERO LIFE SYSTEM
+========================= */
+
+function loseZeroLife() {
+
+  if (
+    zeroInvulnerable ||
+    zeroGameOver
+  ) {
+
+    return;
+
+  }
+
+
+  zeroInvulnerable = true;
+
+
+  zeroLives--;
+
+
+  updateZeroDisplay();
+
+
+  /*
+     GAME OVER
+  */
+
+  if (zeroLives <= 0) {
+
+    zeroLives = 0;
+
+    zeroGameOver = true;
+
+
+    document.getElementById(
+      "zero-status"
+    ).textContent =
+      "SYSTEM LOCKED — MISSION FAILED";
+
+
+    document.getElementById(
+      "zero-final-score"
+    ).textContent =
+      "DATA RECOVERED: " +
+      zeroData;
+
+
+    document.getElementById(
+      "zero-game-over"
+    ).style.display =
+      "block";
+
+
+    return;
+
+  }
+
+
+  /*
+     Reset player.
+  */
+
+  document.getElementById(
+    "zero-status"
+  ).textContent =
+    "WARNING — DATA CORRUPTION!";
+
+
+  zeroPlayerX = 20;
+  zeroPlayerY = 20;
+
+
+  const player =
+    document.getElementById(
+      "zero-player"
+    );
+
+
+  player.style.left = "20px";
+  player.style.bottom = "20px";
+
+
+  setupZeroObjects();
+
+
+  /*
+     Protection period.
+  */
+
+  if (zeroHitTimer) {
+
+    clearTimeout(
+      zeroHitTimer
+    );
+
+  }
+
+
+  zeroHitTimer =
+    setTimeout(
+      function() {
+
+        zeroInvulnerable = false;
+
+        zeroHitTimer = null;
+
+
+        if (!zeroGameOver) {
+
+          document.getElementById(
+            "zero-status"
+          ).textContent =
+            "USE ← → ↑ ↓ KEYS TO EXPLORE";
+
+        }
+
+      },
+      1000
+    );
+
+}
+
+
+/* =========================
+   ZERO DISPLAY
+========================= */
+
+function updateZeroDisplay() {
+
+  const display =
+    document.getElementById(
+      "zero-score"
+    );
+
+
+  if (!display) return;
+
+
+  display.textContent =
+
+    "DATA: " +
+    zeroData +
+
+    " | SECTOR: " +
+    zeroSector +
+
+    " | ❤️ LIVES: " +
+    zeroLives;
+
+}
+
+
+/* =========================
+   RESTART ZERO SECTOR
+========================= */
+
+function restartZeroGame() {
+
+  /*
+     Stop old timer.
+  */
+
+  if (zeroHitTimer) {
+
+    clearTimeout(
+      zeroHitTimer
+    );
+
+    zeroHitTimer = null;
+
+  }
+
+
+  /*
+     Completely reset game.
+  */
+
+  zeroGameStarted = false;
+
+  zeroGameOver = false;
+
+  zeroCoreLocked = false;
+
+  zeroInvulnerable = true;
+
+
+  zeroPlayerX = 20;
+
+  zeroPlayerY = 20;
+
+  zeroData = 0;
+
+  zeroSector = 1;
+
+  zeroLives = 3;
+
+
+  /*
+     Reset player.
+  */
+
+  const player =
+    document.getElementById(
+      "zero-player"
+    );
+
+
+  if (player) {
+
+    player.style.left = "20px";
+
+    player.style.bottom = "20px";
+
+  }
+
+
+  /*
+     Hide game-over.
+  */
+
+  document.getElementById(
+    "zero-game-over"
+  ).style.display =
+    "none";
+
+
+  /*
+     Reset status.
+  */
+
+  document.getElementById(
+    "zero-status"
+  ).textContent =
+    "USE ← → ↑ ↓ KEYS TO EXPLORE";
+
+
+  /*
+     Reset display.
+  */
+
+  updateZeroDisplay();
+
+
+  /*
+     Generate fresh objects.
+  */
+
+  setupZeroObjects();
+
+
+  /*
+     Now officially start.
+  */
+
+  zeroGameStarted = true;
+
+
+  /*
+     Short safe-start period.
+  */
+
+  zeroHitTimer =
+    setTimeout(
+      function() {
+
+        zeroInvulnerable = false;
+
+        zeroHitTimer = null;
+
+      },
+      1000
+    );
+
+}
+
+
+/* =========================
+   ZERO OBJECT MOVEMENT
+========================= */
+
+setInterval(
+  function() {
+
+    if (!isZeroSectorActive()) {
+
+      return;
+
+    }
+
+
+    const gameArea =
+      document.getElementById(
+        "zero-area"
+      );
+
+
+    if (!gameArea) return;
+
+
+    zeroObjects.forEach(
+      function(object) {
+
+        if (
+          !object.element ||
+          object.element.style.display === "none"
+        ) {
+
+          return;
+
+        }
+
+
+        /*
+           Slow movement.
+        */
+
+        const speed =
+          Math.min(
+            1.0 +
+            (zeroSector - 1) * 0.035,
+            1.8
+          );
+
+
+        const verticalSpeed =
+          Math.min(
+            0.8 +
+            (zeroSector - 1) * 0.025,
+            1.3
+          );
+
+
+        object.x +=
+          speed *
+          object.directionX;
+
+
+        object.y +=
+          verticalSpeed *
+          object.directionY;
+
+
+        const maxX =
+          Math.max(
+            10,
+            gameArea.clientWidth -
+            object.element.offsetWidth -
+            10
+          );
+
+
+        const maxY =
+          Math.max(
+            10,
+            gameArea.clientHeight -
+            object.element.offsetHeight -
+            10
+          );
+
+
+        if (object.x >= maxX) {
+
+          object.x = maxX;
+
+          object.directionX = -1;
+
+        }
+
+
+        if (object.x <= 10) {
+
+          object.x = 10;
+
+          object.directionX = 1;
+
+        }
+
+
+        if (object.y >= maxY) {
+
+          object.y = maxY;
+
+          object.directionY = -1;
+
+        }
+
+
+        if (object.y <= 10) {
+
+          object.y = 10;
+
+          object.directionY = 1;
+
+        }
+
+
+        object.element.style.left =
+          object.x + "px";
+
+
+        object.element.style.bottom =
+          object.y + "px";
+
+      }
+    );
+
+
+    checkZeroCollision();
+
+  },
+  40
+);  
+
+    /* =========================
+       CREATE OBSTACLES
+    ========================= */
+
+    function setupObstacles() {
+
+      const obstacleElements =
+        document.querySelectorAll(".obstacle");
+
+
+      obstacles = [];
+
+
+      obstacleElements.forEach(function(obstacle, index) {
+
+
+        let movementType;
+
+
+        /*
+          Different movement patterns
+        */
+
+        if (index % 3 === 0) {
+
+          movementType = "vertical";
+
+        }
+
+        else if (index % 3 === 1) {
+
+          movementType = "horizontal";
+
+        }
+
+        else {
+
+          movementType = "diagonal";
+
+        }
+
+
+        obstacles.push({
+
+          element: obstacle,
+
+          type: movementType,
+
+          x: 80 + index * 65,
+
+          y: 20 + Math.random() * 150,
+
+          directionX:
+            Math.random() > 0.5 ? 1 : -1,
+
+          directionY:
+            Math.random() > 0.5 ? 1 : -1
+
+        });
+
+
+        obstacle.style.left =
+          obstacles[index].x + "px";
+
+
+        obstacle.style.bottom =
+          obstacles[index].y + "px";
+
+      });
+
+    }
+
+
+
+    /* =========================
+       COLLISION DETECTION
+    ========================= */
+
+    function checkCollision() {
+
+      if (gameOver) return;
+
+
+      const player =
+        document.getElementById("player");
+
+      const goal =
+        document.getElementById("goal");
+
+
+      const playerRect =
+        player.getBoundingClientRect();
+
+
+      /*
+        Check every obstacle
+      */
+
+      for (const obstacle of obstacles) {
+
+        const obstacleRect =
+          obstacle.element.getBoundingClientRect();
+
+
+        if (
+
+          playerRect.right >
+          obstacleRect.left &&
+
+          playerRect.left <
+          obstacleRect.right &&
+
+          playerRect.bottom >
+          obstacleRect.top &&
+
+          playerRect.top <
+          obstacleRect.bottom
+
+        ) {
+
+          loseLife();
+
+          return;
+
+        }
+
+      }
+
+
+      /* EXIT */
+
+      const goalRect =
+        goal.getBoundingClientRect();
+
+
+      if (
+        playerRect.right >=
+        goalRect.left
+      ) {
+
+        document.getElementById(
+          "game-status"
+        ).textContent =
+          "SYSTEM ESCAPED — MISSION COMPLETE";
+
+
+        gameOver = true;
+
+      }
+
+    }
+
+
+
+    /* =========================
+       LOSE LIFE
+    ========================= */
+
+    function loseLife() {
+
+      lives--;
+
+
+      updateScoreDisplay();
+
+
+      if (lives <= 0) {
+
+        gameOver = true;
+
+
+        document.getElementById(
+          "game-status"
+        ).textContent =
+          "SYSTEM FAILURE — ALL LIVES LOST";
+
+
+        document.getElementById(
+          "final-score"
+        ).textContent =
+          "FINAL SCORE: " + score;
+
+
+        document.getElementById(
+          "game-over"
+        ).style.display = "block";
+
+
+        return;
+
+      }
+
+
+      document.getElementById(
+        "game-status"
+      ).textContent =
+        "WARNING — LIFE LOST!";
+
+
+      /*
+        Reset player
+      */
+
+      playerPosition = 0;
+
+      playerBottom = 20;
+
+
+      document.getElementById(
+        "player"
+      ).style.left = "0px";
+
+
+      document.getElementById(
+        "player"
+      ).style.bottom = "20px";
+
+
+      /*
+        Give obstacles new random positions
+      */
+
+      setupObstacles();
+
+    }
+
+
+
+    /* =========================
+       SCORE DISPLAY
+    ========================= */
+
+    function updateScoreDisplay() {
+
+      document.getElementById(
+        "score"
+      ).textContent =
+
+        "SCORE: " + score +
+
+        " | LEVEL: " + level +
+
+        " | ❤️ LIVES: " + lives;
+
+    }
+
+
+
+    /* =========================
+       RESTART GAME
+    ========================= */
+
+    function restartGame() {
+
+      playerPosition = 0;
+
+      playerBottom = 20;
+
+      gameOver = false;
+
+      score = 0;
+
+      level = 1;
+
+      obstacleSpeed = 1.8;
+
+      lives = 3;
+
+
+      document.getElementById(
+        "player"
+      ).style.left = "0px";
+
+
+      document.getElementById(
+        "player"
+      ).style.bottom = "20px";
+
+
+      document.getElementById(
+        "game-status"
+      ).textContent =
+        "USE ← → ↑ ↓ KEYS TO MOVE";
+
+
+      document.getElementById(
+        "game-over"
+      ).style.display = "none";
+
+      updateScoreDisplay();
+
+
+      setupObstacles();
+
+    }
+
+
+
+    /* =========================
+       OBSTACLE MOVEMENT
+    ========================= */
+
+    setInterval(function() {
+
+
+      if (gameOver) return;
+
+
+      const gameArea =
+        document.getElementById("game-area");
+
+
+      obstacles.forEach(function(obstacle) {
+
+
+        const element =
+          obstacle.element;
+
+
+        let speed =
+          obstacleSpeed;
+
+
+        /*
+          VERTICAL
+        */
+
+        if (
+          obstacle.type === "vertical"
+        ) {
+
+          obstacle.y +=
+            speed *
+            obstacle.directionY;
+
+
+          if (obstacle.y >= 220) {
+
+            obstacle.directionY = -1;
+
+          }
+
+
+          if (obstacle.y <= 20) {
+
+            obstacle.directionY = 1;
+
+          }
+
+        }
+
+
+        /*
+          HORIZONTAL
+        */
+
+        if (
+          obstacle.type === "horizontal"
+        ) {
+
+          obstacle.x +=
+            speed *
+            obstacle.directionX;
+
+
+          if (
+            obstacle.x >=
+            gameArea.clientWidth - 50
+          ) {
+
+            obstacle.directionX = -1;
+
+          }
+
+
+          if (obstacle.x <= 30) {
+
+            obstacle.directionX = 1;
+
+          }
+
+        }
+
+
+        /*
+          DIAGONAL
+        */
+
+        if (
+          obstacle.type === "diagonal"
+        ) {
+
+          obstacle.x +=
+            speed *
+            obstacle.directionX;
+
+
+          obstacle.y +=
+            speed *
+            obstacle.directionY;
+
+
+          if (
+            obstacle.x >=
+              gameArea.clientWidth - 50 ||
+
+            obstacle.x <= 30
+          ) {
+
+            obstacle.directionX *= -1;
+
+          }
+
+
+          if (
+            obstacle.y >= 220 ||
+
+            obstacle.y <= 20
+          ) {
+
+            obstacle.directionY *= -1;
+
+          }
+
+        }
+
+
+        element.style.left =
+          obstacle.x + "px";
+
+
+        element.style.bottom =
+          obstacle.y + "px";
+
+      });
+
+
+      checkCollision();
+
+
+    }, 30);
+
+
+
+    /* =========================
+       SCORE + DIFFICULTY
+    ========================= */
+
+    setInterval(function() {
+
+
+      if (gameOver) return;
+
+
+      score++;
+
+
+      /*
+        Every 10 points = new level
+      */
+
+      level =
+        Math.floor(score / 10) + 1;
+
+
+      /*
+        Increase obstacle speed
+      */
+
+      obstacleSpeed =
+        1.8 + (level - 1) * 0.25;
+
+
+      updateScoreDisplay();
+
+
+    }, 1000);
+
+    /* =========================
+   DARK CIRCUIT INITIALIZATION
+========================= */
+
+setupDarkCircuit();
+
+function restartDarkGame() {
+
+  darkLevel = 1;
+  darkNodes = 0;
+  darkScore = 0;
+  darkCombo = 0;
+  darkTime = 15;
+  darkAttempts = 3;
+  darkGameOver = false;
+  darkSequence = [];
+  darkProgress = 0;
+
+  if (darkTimer) {
+    clearInterval(darkTimer);
+    darkTimer = null;
+  }
+
+  document.getElementById("dark-game-over").style.display = "none";
+
+  document.getElementById("dark-score").textContent =
+    "SCORE: 0 | COMBO: 0 | NODES: 0 | LEVEL: 1 | ATTEMPT: 3";
+
+  document.getElementById("dark-status").textContent =
+    "SYSTEM INITIALIZING...";
+
+  document.getElementById("dark-game").classList.remove("low-attempts");
+
+  setupDarkCircuit();
+
+  setTimeout(function() {
+    if (!darkGameOver) {
+      showDarkSequence();
+    }
+  }, 500);
+}
+
+  </script>
+
+</body>
+
+</html>
